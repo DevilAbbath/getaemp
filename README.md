@@ -26,7 +26,7 @@ Cuenta administrador:
 
 Vista de bienvenida a la página:
 
-![Vista principal](/public/pt2.png)
+![Vista principal](/public/prt2.png)
 
 Paginas con las ofertas laborales.
 
