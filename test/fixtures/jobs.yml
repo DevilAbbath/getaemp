@@ -1,0 +1,27 @@
+# == Schema Information
+#
+# Table name: jobs
+#
+#  id          :bigint           not null, primary key
+#  job_title   :string
+#  description :text
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  user_id     :bigint           not null
+#
+
+one:
+  job_title: Job One
+  description: Job Description and Requirements
+  user: one
+  
+
+two:
+  job_title: Job Two
+  description: Job Two Description and Requirements
+  user: one
+
+three:
+  job_title: Job Three
+  description: Job Three Description and Requirements
+  user: one

@@ -1,0 +1,10 @@
+<!-- Formulario de postulación Si no es un admin -->
+<div class="my-4">
+  <h2>Postula</h2>
+  <%= simple_form_for [@job, @job_application] do |f| %>
+    <%= f.input :message, label: "Deja tu mensaje para postular", as: :text, input_html: { rows: 5 } %>
+    <%= f.button :submit, "Application", class: "btn btn-outline-primary" %>
+  <% end %>
+</div>
+
+<hr class="mt-5">

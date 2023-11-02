@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg fixed-top bg-dark" data-bs-theme="dark">
+  <div class="container-fluid">
+    <div id="logo" class="ms-md-3 ms-0">
+      <%= link_to 'Get-A-Emp', root_path, class: "navbar-brand" %>
+    </div>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end gap-4 pt-3 pt-md-0" id="navbarSupportedContent">
+      <% if user_signed_in? %>
+        <div class="d-flex flex-column gap-2 d-md-inline-flex flex-md-row gap-md-4">
+          <%= link_to 'Trabajos', jobs_path, class: "link-body-emphasis text-decoration-none" %>
+          <!-- SI el user no es admin mostrar pestaña de postulaciones -->
+          <% if !current_user.admin?%>
+            <%= link_to 'Mis Postulaciones', job_applications_index_path, class: 'link-body-emphasis text-decoration-none' %>
+          <% end %>
+        </div>
+      <% end %>
+
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-light me-4 mt-2 mt-md-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cuenta</a>
+          <ul class="dropdown-menu">
+            <% if user_signed_in? %>
+              <% if current_user.admin? %>
+                <li><%= link_to 'Registrar', new_user_registration_path, class: 'dropdown-item'%></li>
+                <li><hr class="dropdown-divider"></li>
+              <% end %>
+              <li><%= link_to "Editar perfil", edit_user_registration_path, class: 'dropdown-item' %></li>
+              <hr class="dropdown-divider">
+              <li><%= button_to 'Cerrar sesión', destroy_user_session_path, class: 'dropdown-item', method: :delete %></li>
+            <% else %>
+              <li><%= link_to 'Iniciar sesión', new_user_session_path, class: 'dropdown-item'%></li>
+            <% end %>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

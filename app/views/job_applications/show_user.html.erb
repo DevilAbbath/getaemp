@@ -1,0 +1,22 @@
+<h2 class="display-5">Información del Postulante</h2>
+
+<div class="mt-5 px-2 row info-wraper rounded-3 shadow shadow">
+
+  <div class="col-md-6 col-12 order-md-1 order-2 border rounded-2 p-3">
+    <p class="fw-bold mb-0">Nombre:</p>
+    <p><%= @user.name %></p>
+    <p class="fw-bold mb-0">Email:</p>
+    <p><%= @user.email %></p>
+    <p class="fw-bold mb-0">Teléfono:</p>
+    <p><%= @user.phone_number %></p>
+    <p class="fw-bold mb-0">Departamento:</p>
+    <p><%= @user.department %></p>
+    <p class="fw-bold mb-0">Cargo:</p>
+    <p><%= @user.position %></p>
+  </div>
+
+  <div class="col-md-6 overflow-hidden order-1 order-md-2 mb-4 mx-auto pt-3 profile_picture_wraper">
+    <%= image_tag @user.profile_picture, class: "w-100 rounded-5" if @user.profile_picture.attached? %>
+  </div>
+
+</div>

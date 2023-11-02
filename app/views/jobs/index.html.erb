@@ -1,0 +1,24 @@
+<div class="d-flex flex-row justify-content-between align-items-center mt-3">
+  <h1>Ofertas Laborales</h1>
+  <!-- Solo se muestra si el usuario es admin -->
+  <% if current_user.role == 'admin'%>
+    <%= link_to "Crear Oferta Laboral", new_job_path, class: "btn btn-primary btn-sm" %>
+  <% end %>
+</div>
+
+<p style="color: green"><%= notice %></p>
+<% if flash[:error].present? %>
+  <div class="alert alert-danger">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+
+<div id="jobs">
+  <% @jobs.each do |job| %>
+    <%= render job %>
+    <p class="mt-4">
+      <%= link_to "Más Información sobre esta oferta", job,id: "job_#{job.id}_link", class: "btn btn-sm btn-outline-primary" %>
+    </p>
+    <hr>
+  <% end %>
+</div>

@@ -1,0 +1,31 @@
+/*
+ *= require_tree .
+ *= require_self
+ */
+
+ *{
+   margin: 0;
+   padding: 0;
+   scroll-behavior: smooth;
+}
+
+main{
+  padding-top: 60px;
+}
+
+.profileWraper{
+ width: 5rem;
+ height: 5rem;
+}
+
+.application{
+ background: hsla(0, 0%, 100%, 0.6);
+}
+
+.profile_picture_wraper{
+ max-width: 50rem;
+}
+
+.info-wraper{
+ background-color: hsla(0, 0%, 0%, 0.1);
+}

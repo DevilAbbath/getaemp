@@ -1,0 +1,23 @@
+<!-- Postulaciones solo son vistas por administrador -->
+<% if @job_applications.present? %>
+  <% if current_user.role == 'admin' %>
+    <h2>Postulaciones:</h2>
+    <!-- Muestra todas las postulaciones al admin -->
+    <% @job_applications.each do |job_application| %>
+      <div class="my-3 border p-2 rounded-2 application shadow-sm">
+        <div class="d-flex gap-2 align-items-center my-2">
+          <% if job_application.user.profile_picture.present? %>
+            <%= image_tag job_application.user.profile_picture, class: "profileWraper rounded-5" %>
+          <% end %>
+          <p class="mb-0"><%= job_application.user.name %> se ha postulado.</p>
+          <!-- Agregar un enlace para ver más información del usuario -->
+        </div>
+        <hr>
+        <%= simple_format(job_application.message) %>
+        <%= link_to 'Ver usuario', show_user_job_application_path(job_application), class: 'btn btn-outline-primary btn-sm my-2' %>
+      </div>
+    <% end %>
+  <% end %>
+<% else %>
+  <p>No hay postulaciones para este trabajo.</p>
+<% end %>

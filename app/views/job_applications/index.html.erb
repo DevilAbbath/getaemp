@@ -1,0 +1,23 @@
+<!-- app/views/job_applications/index.html.erb -->
+
+<h1>Mis Postulaciones</h1>
+<hr>
+
+<% if @job_applications.present? %>
+  <div class="row">
+    <% @job_applications.each do |job_application| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><%= job_application.job.job_title %></h5>
+            <p class="card-text"><%= job_application.message %></p>
+            <%= link_to 'Ver Oferta', job_path(job_application.job), class: 'btn btn-outline-primary' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<% else %>
+  <p>No has realizado ninguna postulación.</p>
+<% end %>

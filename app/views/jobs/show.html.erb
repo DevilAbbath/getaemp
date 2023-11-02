@@ -1,0 +1,23 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @job %>
+
+<!-- Links -->
+<% if current_user.role == 'admin' %>
+  <div class="d-flex gap-4 align-items-center my-5">
+    <%= link_to "Editar oferta", edit_job_path(@job), class: "btn btn-sm btn-outline-primary" %>
+    <%= button_to "Eliminar oferta", @job, class: "btn btn-sm btn-outline-danger", method: :delete %>
+  </div>
+  <hr class="mb-5">
+
+<% else %>
+
+  <% if current_user.job_applications.exists?(job_id: @job.id) %>
+    <p class="text-danger fs-4">Ya te has postulado a esta oferta de trabajo.</p>
+  <% else %>
+    <%= render 'application_form' %>
+  <% end %>
+<% end %>
+
+<!-- Mostrar las postulaciónes a los admin -->
+<%= render 'application' %>

@@ -1,0 +1,33 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :bigint           not null, primary key
+#  email                  :string           default(""), not null
+#  encrypted_password     :string           default(""), not null
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  profile_picture        :string
+#  name                   :string
+#  role                   :string           not null
+#  phone_number           :string
+#  department             :string
+#  position               :string
+#
+
+one:
+  name: Esteban
+  email: admin@mail.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password123') %>
+  role: admin
+  profile_picture: <%= Rails.root.join("test/fixtures/files/profile_picture.png").open %>
+
+two:
+  name: Luis
+  email: user@mail.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, '123456') %>
+  profile_picture: <%= Rails.root.join("test/fixtures/files/profile_picture.png").open %>
+  role: user
